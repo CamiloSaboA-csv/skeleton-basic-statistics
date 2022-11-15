@@ -70,7 +70,7 @@ class TestStatistics(TestCase):
                 "numbers": (3, 9, 3, 4, 6),
                 "tests_and_results": (
                     (4, 2),
-                    (5, 3),  # Note: 5 is not in the list
+                    (5, 3), 
                     (6, 3),
                     (9, 4),
                 ),

@@ -1,1 +1,1 @@
-# Actually don't have any requirements
+# The app was built with python 3.12, actually don't have any requirements

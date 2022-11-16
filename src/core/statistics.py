@@ -1,7 +1,7 @@
 from typing import Iterable
 
 from core.data_record import Number, Collection
-
+from core.utils import validate_int
 
 class Statistics:
     """
@@ -57,18 +57,22 @@ class Statistics:
         """
         Returns the number of numbers less than the given number.
         """
+        number=validate_int(number)
         return self._data[number].less
 
     def greater(self, number: int) -> int:
         """
         Returns the number of numbers greater than the given number.
         """
+        number=validate_int(number)
         return self._data[number].greater
 
     def between(self, a: int, b: int) -> int:
         """
         Returns the number of numbers between the two given numbers.
         """
+        a=validate_int(a)
+        b=validate_int(b)
         if a < b:
             less_than, greater_than = a, b
         else:
@@ -89,9 +93,7 @@ class DataCapture:
         """
         Adds the number to the recorded data.
         """
-        if number not in self.data.keys():
-            self.data[number] = Number(number)
-        self.data[number].count += 1
+        self.data[validate_int(number)].count += 1
         self.count += 1
 
     def build_stats(self) -> Statistics:

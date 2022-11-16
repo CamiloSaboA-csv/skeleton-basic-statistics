@@ -2,7 +2,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Iterable
 
-from core.utils import MAX_VALUE
+from core.utils import validate_int, MAX_VALUE
 
 
 @dataclass()

@@ -88,7 +88,6 @@ class Collection:
         if key < 1 or key > MAX_VALUE:
             raise ValueError(
                 f"the number {key} is out of range, the number must be between the values 1 and {str(MAX_VALUE)}")
-        # if key not in self.collection:
         try:
             return self.collection[key]
         except:

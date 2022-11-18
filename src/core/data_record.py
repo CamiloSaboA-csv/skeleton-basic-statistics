@@ -52,19 +52,19 @@ class Collection:
         """
         return self
 
-    def __next__(self) -> Number:
-        """
-        Returns the next iteration lower than MAX_VALUE.
-        """
-        while self.current_iteration < MAX_VALUE:
-            self.current_iteration += 1
-            if self.current_iteration not in self.collection:
-                return Number(self.current_iteration)
-            else:
-                return self.collection[self.current_iteration]
+    # def __next__(self) -> Number:
+    #     """
+    #     Returns the next iteration lower than MAX_VALUE.
+    #     """
+    #     while self.current_iteration < MAX_VALUE:
+    #         self.current_iteration += 1
+    #         if self.current_iteration not in self.collection:
+    #             return Number(self.current_iteration)
+    #         else:
+    #             return self.collection[self.current_iteration]
 
-        self.current_iteration = 0
-        raise StopIteration
+    #     self.current_iteration = 0
+    #     raise StopIteration
 
     def __repr__(self) -> str:
         """
@@ -88,9 +88,12 @@ class Collection:
         if key < 1 or key > MAX_VALUE:
             raise ValueError(
                 f"the number {key} is out of range, the number must be between the values 1 and {str(MAX_VALUE)}")
-        if key not in self.collection:
+        # if key not in self.collection:
+        try:
+            return self.collection[key]
+        except:
             self.collection[key] = Number(key)
-        return self.collection[key]
+            return self.collection[key]
 
     def __len__(self) -> int:
         """

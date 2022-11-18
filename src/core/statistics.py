@@ -1,7 +1,7 @@
 from typing import Iterable
 
 from core.data_record import Number, Collection
-from core.utils import validate_int
+from core.utils import validate_int, MAX_VALUE
 
 class Statistics:
     """
@@ -104,11 +104,11 @@ class DataCapture:
         less: int = 0
         greater: int = self.count
 
-        for added_number in self.data:
-            stats[added_number.value].count = added_number.count
-            stats[added_number.value].less = less
-            stats[added_number.value].greater = greater - added_number.count
-            less += added_number.count
-            greater -= added_number.count
-
+        for i in range(1, MAX_VALUE+1):
+            stats[self.data[i].value].count = self.data[i].count
+            stats[self.data[i].value].less = less
+            stats[self.data[i].value].greater = greater - self.data[i].count
+            less += self.data[i].count
+            greater -= self.data[i].count
+            
         return stats
